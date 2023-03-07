@@ -1,0 +1,154 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Exemple JS</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+        <script src="./js/functions.js"></script>
+        <link href="./prism/prism.css" rel="stylesheet" />
+        <script src="./prism/prism.js"></script>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <div class="container gx-5 mt-5">
+            <p class="display-6">Chargement d'un fichier Javascript</p>
+            <div class="row">
+                <p class="text-start">
+                    Pour charger un fichier Javascript dans une page HTML, on
+                    peut insérer la balise suivante dans le <span class="font-monospace">head</span> :
+                </p>
+                <pre class="code-prism">
+                    <code class="lang-html">
+&lt;head&gt;
+    &lt;script src="./chemin/vers/le/script.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+                    </code>
+                </pre>
+            </div>
+        </div>
+        <div class="container gx-5 mt-5">
+            <p class="display-6">Éléments de base</p>
+            <div class="row">
+                <p class="text-start">
+                    Voici un bout de code en Javascript qui montre comment
+                    déclarer une variable, créer une instruction conditionnelle,
+                    et créer une boucle for.
+                </p>
+                <pre class="code-prism">
+                    <code class="lang-js">
+  let entier = 0;
+  let chaine = "Bonjour";
+  let valeurBooleenne = true || false;
+  if (valeurBooleenne) {
+    alert(entier);
+    alert(chaine);
+  } else if (valeurBooleenne) {
+    // On ne devrait jamais arriver là
+  } else {
+    // Ici non plus
+  }
+
+  let message = "";
+  for (let i = 0; i < 10; i++) {
+    message += i;
+  }
+  alert(message);
+                    </code>
+                </pre>
+                <button class="btn btn-primary w-25" onclick="demo();">Exécuter le programme</button>
+            </div>
+        </div>
+        <div class="container gx-5 mt-5">
+            <p class="display-6">Exemple "onclick"</p>
+        </div>
+        <div class="container gx-5">
+            <div class="row">
+                <p class="text-start">
+                    Voici un exemple de <span onclick="buttonClicked();">bouton</span>
+                    en HTML, ainsi que le code correspondant :</p>
+                <button class="btn btn-primary w-25" onclick="buttonClicked();">Click me!</button>
+                <pre class="code-prism">
+                    <code class="lang-html">
+&lt;button class="btn btn-primary" onclick="buttonClicked();"&gt;Click me!&lt;/button&gt;
+&lt;!-- L'attribut onclick="buttonClicked();" signifie que :
+  -- Lorsque le bouton est cliqué, une fonction Javascript intitulée
+  -- "buttonClicked" est appelée. Celle-ci doit se trouver dans les fichiers
+  -- Javascript chargés par cette page HTML. --&gt;
+                    </code>
+                </pre>
+            </div>
+
+            <p class="text-start">
+                Voici le contenu de la fonction
+                <span class="font-monospace">buttonClicked</span> :
+            </p>
+            <pre class="code-prism">
+                <code class="lang-js">
+function buttonClicked() {
+    alert("Le bouton a été cliqué.");
+}
+                </code>
+            </pre>
+        </div>
+
+        <div class="container gx-5 mt-5">
+            <p class="display-6">Exemple "onMouseOver"</p>
+            <div class="row">
+                <p class="text-start" onmouseover="changeColor(this);">
+                    Voici un exemple de texte qui change d'apparence lorsque
+            l'on passe la souris dessus.
+                </p>
+                <pre class="code-prism">
+                    <code class="lang-html">
+&lt;p class="text-start" onmouseover="changeColor(this);"&gt;
+    Voici un exemple de texte qui change d'apparence lorsque
+    l'on passe la souris dessus.
+&lt;/p&gt;
+                    </code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="container gx-5 mt-5">
+            <p class="display-6">Manipulation d'éléments HTML</p>
+            <div class="row">
+                <p class="text-start">
+                    Il est possible d'ajouter ou de modifier le contenu d'une
+                    page HTML avec Javascript.
+                </p>
+                <div class="row">
+                    <button class="btn btn-primary w-25 mx-2" onclick="modificationDOM();">Modification des bouts de code</button>
+                    <button class="btn btn-primary w-25 mx-2" onclick="ajoutDOM();">Ajout de texte</button>
+                </div>
+
+                <pre class="code-prism">
+                    <code class="lang-js">
+function modificationDOM() {
+  let snippets = document.getElementsByClassName('code-prism');
+  for (let i = 0; i < snippets.length; i++) {
+    snippets.item(i).style.background = "yellow";
+  }
+}
+
+function ajoutDOM() {
+  let element = document.getElementById('ajout');
+  element.innerHTML = "&lt;p class=\"display-6\"&gt;Texte rajouté&lt;/p&gt;"
+    + "&lt;div class=\"row\"&gt;"
+    + "&lt;p class=\"text-start\"&gt;Ceci est un exemple de texte ajouté par Javascript.&lt;/p&gt;"
+    + "&lt;/div&gt;";
+}
+
+                    </code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="container gx-5 mt-5" id="ajout">
+        </div>
+    </body>
+</html>
